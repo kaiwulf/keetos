@@ -16,7 +16,7 @@ void ticket::create_ticket(string date, string start_date, string project) {
     cout << "Assignment title: ";
     cin >> s_title;
     cout << "Assignment description";
-    cin >> s_body;
+    cin >> s_body;	// TO-Do implement alternative input methods, ie text file
 }
 
 void ticket::finish_ticket() {
