@@ -50,6 +50,7 @@ void Keetos::finish_ticket(string project_name = "", string title = "") {
                 s_tickets_vec.erase(elem_to_remove + i); i+=1;
         }
     }
+    // TO-DO reserialize updated vector and save to disk
 }
 
 void Keetos::find_project() {
