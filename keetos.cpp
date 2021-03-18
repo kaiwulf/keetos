@@ -14,8 +14,8 @@ Keetos::keetos() {
 
 void Keetos::run(string s) {
     if(s == "create") {
-        Tickets *create_ticket = new Tickets;
-        new_ticket->new_ticket();
+        Tickets *new_ticket = new Tickets;
+        new_ticket->create_ticket();
         delete new_ticket;
     } else if(s == "list") {
         to_dos();
