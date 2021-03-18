@@ -1,7 +1,7 @@
 #include <string>
 #include <vector>
 
-#include "Keehos.h"
+#include "Keetos.h"
 
 using namespace std;
 
@@ -15,7 +15,7 @@ Keetos::keetos() {
 void Keetos::run(string s) {
     if(s == "create") {
         Tickets *new_ticket = new Tickets;
-        new_ticket->new_ticket();
+        new_ticket->create_ticket();
         delete new_ticket;
     } else if(s == "list") {
         to_dos();
