@@ -21,6 +21,10 @@ void Keetos::run(string s) {
         find_title();
     } else if(s == "project") {
         find_project();
+    } else if(s == "finish") {
+        finish_ticket();
+    } else if(s == "delete") {
+        delete_ticket();
     }
 }
 
@@ -41,13 +45,22 @@ void Keetos::inst_ticket(string start_date, string project_name) {
     // Serializing ticket vector goes here
 }
 
-void Keetos::finish_ticket(string project_name = "", string title = "") {
+void Keetos::delete_ticket(string project_name = "", string title = "") {
     int i = 0;
 
     auto elem_to_remove = s_tickets_vec.begin();
     for(auto p : s_tickets_vec) {
         if(p.get_proj_name() == project_name || p.get_title() == title) {
                 s_tickets_vec.erase(elem_to_remove + i); i+=1;
+        }
+    }
+    // TO-DO reserialize updated vector and save to disk
+}
+
+void Keetos::finish_ticket(string project_name = "", string title = "") {
+    for(auto p : s_tickets_vec) {
+        if(p.get_proj_name() == project_name || p.get_title() == title) {
+                p.set_checked(false);
         }
     }
     // TO-DO reserialize updated vector and save to disk

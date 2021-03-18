@@ -17,6 +17,7 @@ class Keetos {
         void find_project();
         void find_title();
         void finish_ticket(string project_name, string title);
+        void delete_ticket(string project_name, string title);
         void run(string s);
         void to_dos();
         string get_cmd();
