@@ -10,8 +10,7 @@ class Ticket {
     public:
         void create_ticket(string start_date, string project_name);
         string get_proj_name();
-        bool get_checked()
-        void finish_ticket();
+        bool get_checked();
         void to_dos();
         tickets();
 

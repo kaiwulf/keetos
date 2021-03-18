@@ -7,10 +7,6 @@ Ticket::ticket() {
 
 }
 
-// Ticket::ticket(string start_date, string project_name) {
-//     create_ticket(start_date, project_name);
-// }
-
 void Ticket::create_ticket(string start_date, string project_name) {
 
     s_checked = false;
@@ -27,10 +23,6 @@ void Ticket::create_ticket(string start_date, string project_name) {
 
     cout << "Assignment description";
     cin >> s_body;	// TO-Do implement alternative input methods, ie text file
-}
-
-void Ticket::finish_ticket(string project_name) {
-
 }
 
 string Ticket::get_proj_name() {
