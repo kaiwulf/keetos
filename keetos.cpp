@@ -41,6 +41,17 @@ void Keetos::inst_ticket(string start_date, string project_name) {
     // Serializing ticket vector goes here
 }
 
+void Keetos::finish_ticket(string project_name = "", string title = "") {
+    int i = 0;
+
+    auto elem_to_remove = s_tickets_vec.begin();
+    for(auto p : s_tickets_vec) {
+        if(p.get_proj_name() == project_name || p.get_title() == title) {
+                s_tickets_vec.erase(elem_to_remove + i); i+=1;
+        }
+    }
+}
+
 void Keetos::find_project() {
     string proj;
     cout << "Project? ";
