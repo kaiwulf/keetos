@@ -9,7 +9,7 @@ using namespace std;
 
 Keetos::keetos() {
     s_state = "";
-    // Load xml file from disk
+    // Load xml file from disk to s_tickets_vec
 }
 
 void Keetos::run(string s) {
@@ -19,6 +19,8 @@ void Keetos::run(string s) {
         to_dos();
     } else if(s == "find") {
         find_title();
+    } else if(s == "project") {
+        find_project();
     }
 }
 
