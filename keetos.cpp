@@ -14,9 +14,7 @@ Keetos::keetos() {
 
 void Keetos::run(string s) {
     if(s == "create") {
-        Tickets *new_ticket = new Tickets;
-        new_ticket->create_ticket();
-        delete new_ticket;
+        new_ticket();
     } else if(s == "list") {
         to_dos();
     } else if(s == "find") {
@@ -35,8 +33,8 @@ void Keetos::new_ticket(string start_date = "", string project_name = "") {
 }
 
 void Keetos::inst_ticket(string start_date, string project_name) {
-    Tickets *a_new_one = new Tickets;
-    a_new_one->create_ticket(start_date, project_name);
+    Tickets a_new_one;
+    a_new_one.create_ticket(start_date, project_name);
     s_tickets_vec.pusback(a_new_one);
     // Serializing ticket vector goes here
 }

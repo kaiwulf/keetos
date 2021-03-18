@@ -20,7 +20,7 @@ class Keetos {
     private:
         void inst_ticket(string start_date, string project_name)
         string s_cmd;
-        vector<Ticket*> s_tickets_vec;
+        vector<Ticket> s_tickets_vec;
         // Tickets *s_ticket;
 }
 
