@@ -45,5 +45,7 @@ void UI::arg_parse() {
 
 void UI::help() {
     cout << "Usage:" << endl
-        << "tickets [<project name> <start_date>]" << endl;
+        << "keetos [<project name> <start_date>]" << endl
+        << "or" << endl
+        << "keetos [?] for repl" << endl;
 }
