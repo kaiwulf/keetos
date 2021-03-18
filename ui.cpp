@@ -22,7 +22,9 @@ void UI::get_args(int argc, char **argv) {
         cout << "This is KEETOS." << endl << "a) 'create' a ticket" << endl
              << "'list' TO-DOs" << endl
              << "'find' a specific ticket" << endl
-             << "'project' - retrieve ticket(s) related to a project" << endl;
+             << "'project' - retrieve ticket(s) related to a project" << endl
+             << "'finish' a ticket" << endl
+             << "'delete' a ticket" << endl;
         cin  << s_get;
     
         state.run(s_get);
