@@ -8,7 +8,7 @@ UI::ui()  {
 
 }
 
-void UI::cli() {
+void UI::cli_repl(int argc, char **argv) {
 
 }
 
@@ -17,35 +17,31 @@ void UI::get_args(int argc, char **argv) {
     if(argc > 4) {
         s_usr_args.assign(argv + 1, argv + argc);
         arg_parse();
-    } if(argc == 1) {
-        new_ticket();
-    }
-    else {
+    } else if(argc == 1) {
+        Keetos state;
+        cout << "This is KEETOS." << endl << "a) 'create' a ticket" << endl
+             << "'list' TO-DOs" << endl
+             << "'find' a specific ticket" << endl
+             << "'project' - retrieve ticket(s) related to a project" << endl;
+        cin  << s_get;
+    
+        state.run(s_get);
+    
+    } else {
         help();
     }
 }
 
+
 void UI::arg_parse() {
-    
+    Keetos state;
+    state.new_ticket(s_usr_args[0] /* project name */, s_usr_args[1] /* start date */);
 }
 
-Ticket UI::new_ticket() {
-    string date, start_date, project;
-
-    cout << "Project: " << endl;
-    cin >> project;
-    cout << "Start date: " << endl;
-    cin >> start_date;
-
-
-    Ticket a_new_one(start_date, project);
-    return a_new_one;
-}
-
-Ticket UI::new_ticket(string start_date, string project) {
-    Ticket a_new_one(start_date, project);
-    return a_new_one;
-}
+// Ticket UI::new_ticket(string start_date, string project) {
+//     Ticket a_new_one(start_date, project);
+//     return a_new_one;
+// }
 
 void UI::help() {
     cout << "Usage:" << endl
