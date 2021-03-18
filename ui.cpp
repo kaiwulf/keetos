@@ -1,7 +1,7 @@
 #include <iostream>
+#include <vector>
 
 #include "ui.h"
-#include "tickets.h"
 
 
 UI::ui()  {
@@ -47,5 +47,5 @@ void UI::help() {
     cout << "Usage:" << endl
         << "keetos [<project name> <start_date>]" << endl
         << "or" << endl
-        << "keetos [?] for repl" << endl;
+        << "keetos [?] (for repl)" << endl;
 }

@@ -6,6 +6,8 @@
 #include <string>
 #include <vector>
 
+#include "Ticket.h"
+
 using namespace std;
 
 class Keetos {
