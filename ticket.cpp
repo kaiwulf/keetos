@@ -33,6 +33,10 @@ bool Ticket::get_checked() {
     return s_checked;
 }
 
+void Ticket::set_checked(bool checked) {
+    s_checked = checked;
+}
+
 void Ticket::display_info() {
     cout << "Project name " << s_project_name << endl;
     cout << "Done? " << s_checked << endl;

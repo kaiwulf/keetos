@@ -12,6 +12,8 @@ class Ticket {
         string get_proj_name();
         bool get_checked();
         void to_dos();
+        void display_info();
+        void set_checked(bool checked);
         tickets();
 
     private:
