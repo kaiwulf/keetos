@@ -9,10 +9,19 @@
 using namespace std;
 
 class Keetos {
-    keetos(vector<string> s);
-    void run(vector<string> t);
-    void to_dos();
-
+    public:
+        keetos();
+        void new_ticket(string start_date, string project);
+        void find_project();
+        void find_title();
+        void run(string s);
+        void to_dos();
+        string get_cmd();
+    private:
+        void inst_ticket(string start_date, string project_name)
+        string s_cmd;
+        vector<Ticket*> s_tickets_vec;
+        // Tickets *s_ticket;
 }
 
 #endif
