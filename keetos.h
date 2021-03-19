@@ -6,13 +6,13 @@
 #include <string>
 #include <vector>
 
-#include "Ticket.h"
+#include "ticket.h"
 
 using namespace std;
 
 class Keetos {
     public:
-        keetos();
+        Keetos();
         void new_ticket(string start_date, string project);
         void find_project();
         void find_title();
@@ -22,10 +22,9 @@ class Keetos {
         void to_dos();
         string get_cmd();
     private:
-        void inst_ticket(string start_date, string project_name)
+        void inst_ticket(string start_date, string project_name);
         string s_cmd;
         vector<Ticket> s_tickets_vec;
-        // Tickets *s_ticket;
-}
+};
 
 #endif

@@ -2,17 +2,15 @@
 #define __UI_
 #include <string>
 #include <vector>
-#include "ticket.h"
 
 using namespace std;
 
 class UI {
     public:
         ui();
-        void cli_repl();
+        void cli_repl(int argc, char **argv);
         void get_args(int argc, char **argv);
         void arg_parse();
-        // Ticket new_ticket();
         void help();
 
     private:

@@ -1,7 +1,7 @@
 #ifndef __TICKETS_
 #define __TICKETS_
 
-#include <strings>
+#include <string>
 #include <vector>
 
 using namespace std;
@@ -14,10 +14,10 @@ class Ticket {
         void to_dos();
         void display_info();
         void set_checked(bool checked);
-        tickets();
+        Ticket();
 
     private:
-        bool s_checked
+        bool s_checked;
         string s_body;
         string s_assigned;
         string s_end_date;
@@ -25,6 +25,6 @@ class Ticket {
         string s_title;
         string s_project_name;
         vector<string> s_data;
-}
+};
 
 #endif

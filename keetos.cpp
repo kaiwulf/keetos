@@ -1,30 +1,29 @@
 #include <string>
 #include <vector>
 
-#include "Keetos.h"
+#include "keetos.h"
 
 using namespace std;
 
 // TO-DO serialize vector to save on disk
 
-Keetos::keetos() {
-    s_state = "";
+Keetos::Keetos() {
     // Load xml file from disk to s_tickets_vec
 }
 
 void Keetos::run(string s) {
     if(s == "create") {
-        new_ticket();
+        Keetos::new_ticket();
     } else if(s == "list") {
         to_dos();
     } else if(s == "find") {
-        find_title();
+        Keetos::find_title();
     } else if(s == "project") {
-        find_project();
+        Keetos::find_project();
     } else if(s == "finish") {
-        finish_ticket();
+        Keetos::finish_ticket();
     } else if(s == "delete") {
-        delete_ticket();
+        Keetos::delete_ticket();
     }
 }
 

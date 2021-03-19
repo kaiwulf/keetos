@@ -1,5 +1,5 @@
 #include <iostream>
-#include <strings>
+#include <string>
 
 #include "ticket.h"
 
