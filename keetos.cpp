@@ -1,5 +1,7 @@
 #include <string>
 #include <vector>
+#include <iostream>
+#include <fstream>
 
 #include "keetos.h"
 
@@ -7,13 +9,33 @@ using namespace std;
 
 // TO-DO serialize vector to save on disk
 
-Keetos::Keetos() {
-    // Load xml file from disk to s_tickets_vec
+Keetos::Keetos(bool read) {
+    s_keetos_file = "keetos.bin";
+
+    if(read)
+        xml_serialize_read();
+    else
+        xml_serialize_write();
 }
+
+void Keetos::xml_serialize_read() {
+    fstream fee;
+
+    fee.open(s_keetos_file, ios::out);
+    if(!fee) {
+        // load info to vector
+    } else
+        fee.close();
+}
+
+void Keetos::xml_serialize_write() {
+
+}
+
 
 void Keetos::run(string s) {
     if(s == "create") {
-        Keetos::new_ticket();
+        Keetos::new_ticket("", "");
     } else if(s == "list") {
         to_dos();
     } else if(s == "find") {
@@ -21,26 +43,29 @@ void Keetos::run(string s) {
     } else if(s == "project") {
         Keetos::find_project();
     } else if(s == "finish") {
-        Keetos::finish_ticket();
+        Keetos::finish_ticket("", "");
     } else if(s == "delete") {
-        Keetos::delete_ticket();
+        Keetos::delete_ticket("", "");
     }
 }
 
 void Keetos::new_ticket(string start_date = "", string project_name = "") {
     if(start_date != "" && project_name != "") {
         cout << "Project: " << endl;
-        cin >> project;
+        cin >> project_name;
         cout << "Start date: " << endl;
         cin >> start_date;
     }
     inst_ticket(start_date, project_name);
+    for(auto p : s_ticket_vec) {
+        cout 
+    }
 }
 
 void Keetos::inst_ticket(string start_date, string project_name) {
-    Tickets a_new_one;
+    Ticket a_new_one;
     a_new_one.create_ticket(start_date, project_name);
-    s_tickets_vec.pusback(a_new_one);
+    s_tickets_vec.push_back(a_new_one);
     // Serializing ticket vector goes here
 }
 
@@ -88,7 +113,7 @@ void Keetos::find_title() {
 }
 
 void Keetos::to_dos() {
-    for(auto p ; s_tickets_vec) {
+    for(auto p : s_tickets_vec) {
         if(p.get_checked()) {
             p.display_info();
         }

@@ -3,9 +3,10 @@
 #include <string>
 
 #include "ui.h"
+#include "keetos.h"
 
 
-UI::ui()  {
+UI::UI()  {
 
 }
 
@@ -15,18 +16,18 @@ void UI::cli_repl(int argc, char **argv) {
 
 void UI::get_args(int argc, char **argv) {
 
-    if(argc > 4) {
+    if(argc > 1 && argc < 4) {
         s_usr_args.assign(argv + 1, argv + argc);
         arg_parse();
     } else if(argc == 1) {
-        Keetos state;
+        Keetos state(false);
         cout << "This is KEETOS." << endl << "a) 'create' a ticket" << endl
              << "'list' TO-DOs" << endl
              << "'find' a specific ticket" << endl
              << "'project' - retrieve ticket(s) related to a project" << endl
              << "'finish' a ticket" << endl
              << "'delete' a ticket" << endl;
-        cin  << s_get;
+        cin  >> s_get;
     
         state.run(s_get);
     
@@ -37,7 +38,7 @@ void UI::get_args(int argc, char **argv) {
 
 
 void UI::arg_parse() {
-    Keetos state;
+    Keetos state(false);
     state.new_ticket(s_usr_args[0] /* project name */, s_usr_args[1] /* start date */);
 }
 

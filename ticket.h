@@ -13,6 +13,7 @@ class Ticket {
         bool get_checked();
         void to_dos();
         void display_info();
+        string get_title();
         void set_checked(bool checked);
         Ticket();
 

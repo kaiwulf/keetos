@@ -7,7 +7,7 @@ using namespace std;
 
 class UI {
     public:
-        ui();
+        UI();
         void cli_repl(int argc, char **argv);
         void get_args(int argc, char **argv);
         void arg_parse();
@@ -16,6 +16,6 @@ class UI {
     private:
         vector<string> s_usr_args;
         string s_get;
-}
+};
 
 #endif
