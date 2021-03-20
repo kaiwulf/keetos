@@ -14,8 +14,10 @@ Keetos::Keetos(bool read) {
 
     if(read)
         xml_serialize_read();
-    else
+    else {
+        Keetos::push_vec_elems();
         xml_serialize_write();
+    }
 }
 
 void Keetos::xml_serialize_read() {
@@ -28,8 +30,23 @@ void Keetos::xml_serialize_read() {
         fee.close();
 }
 
-void Keetos::xml_serialize_write() {
+void Keetos:push_vec_elems() {
+    s_xml_vec.push_back(s_header);
+    s_xml_vec.push_back(s_checked);
+    s_xml_vec.push_back(s_body);
+    s_xml_vec.push_back(s_assign);
+    s_xml_vec.push_back(s_start);
+    s_xml_vec.push_back(s_end);
+    s_xml_vec.push_back(s_title);
+    s_xml_vec.push_back(s_project);
+    s_xml_vec.push_back(s_assigned);
+}
 
+void Keetos::xml_serialize_write() {
+    ifstream input;
+    input.open(s_keetos_file);
+
+    
 }
 
 
@@ -57,9 +74,9 @@ void Keetos::new_ticket(string start_date = "", string project_name = "") {
         cin >> start_date;
     }
     inst_ticket(start_date, project_name);
-    for(auto p : s_ticket_vec) {
-        cout 
-    }
+    // for(auto p : s_ticket_vec) {
+    //     cout 
+    // }
 }
 
 void Keetos::inst_ticket(string start_date, string project_name) {

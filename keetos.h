@@ -28,6 +28,19 @@ class Keetos {
         string s_cmd;
         string s_keetos_file;
         vector<Ticket> s_tickets_vec;
+
+        // for XML parsing
+        string s_header = "<?xml version="1.0" encoding="UTF-8"?>";
+        string s_checked = "checked";
+        string s_body = "body";
+        string s_assign = "assign";
+        string s_start = "start date";
+        string s_end = "end date";
+        string s_title = "title";
+        string s_project = "project name";
+        string s_body = "body";
+        string s_assigned = "assigned";
+        vector<string> s_xml_vec;
 };
 
 #endif
