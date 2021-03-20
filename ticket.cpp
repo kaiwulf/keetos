@@ -11,8 +11,8 @@ void Ticket::create_ticket(string start_date, string project_name) {
 
     s_checked = false;
     
-    s_data.push_back(s_date_created);
-    s_date_created = start_date;
+    s_data.push_back(s_start_date);
+    s_start_date = start_date;
     
     s_project_name = project_name;
     s_data.push_back(s_project_name);
@@ -44,7 +44,7 @@ string Ticket::get_title() {
 void Ticket::display_info() {
     cout << "Project name " << s_project_name << endl;
     cout << "Done? " << s_checked << endl;
-    cout << "Start date " << s_date_created << endl;
+    cout << "Start date " << s_start_date << endl;
     cout << "Assignment title " << s_title << endl;
     cout << "Assignment description:" << endl << s_body << endl;
 }

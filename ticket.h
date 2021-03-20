@@ -22,7 +22,7 @@ class Ticket {
         string s_body;
         string s_assigned;
         string s_end_date;
-        string s_date_created;
+        string s_start_date;
         string s_title;
         string s_project_name;
         vector<string> s_data;
