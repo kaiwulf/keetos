@@ -1,5 +1,5 @@
-#ifndef __TICKETS_
-#define __TICKETS_
+#ifndef __TICKETm
+#define __TICKETm
 
 #include <string>
 #include <vector>
@@ -27,14 +27,14 @@ class Ticket {
         Ticket();
 
     private:
-        bool s_checked;
-        string s_body;
-        string s_assigned;
-        string s_end_date;
-        string s_start_date;
-        string s_title;
-        string s_project_name;
-        vector<string> s_data;
+        bool t_checked;
+        string t_body;
+        string t_assigned;
+        string t_end_date;
+        string t_start_date;
+        string t_title;
+        string t_project_name;
+        vector<string> t_data;
 };
 
 #endif
