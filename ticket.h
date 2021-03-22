@@ -34,7 +34,6 @@ class Ticket {
         string t_start_date;
         string t_title;
         string t_project_name;
-        vector<string> t_data;
 };
 
 #endif
