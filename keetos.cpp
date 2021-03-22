@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 
+
 #include "keetos.h"
 
 using namespace std;
@@ -18,13 +19,10 @@ Keetos::Keetos(bool read) {
 
     if(read)
         xml_serialize_read();
-    else {
-        init_serialize();
-        xml_serialize_write();
-    }
 }
 
 Keetos::~Keetos() {
+    init_serialize();
     xml_serialize_write();
 }
 
@@ -47,10 +45,7 @@ void Keetos::xml_serialize_read() {
     fstream xml_in;
 
     xml_in.open(k_keetos_file, ios::out);
-    if(!xml_in) {
         // load info to vector
-    } else
-        xml_in.close();
 }
 
 void Keetos::push_vec_elems() {
@@ -106,16 +101,12 @@ void Keetos::new_ticket(string start_date, string project_name) {
         cin >> start_date;
     }
     inst_ticket(start_date, project_name);
-    // for(auto p : k_ticket_vec) {
-    //     cout 
-    // }
 }
 
 void Keetos::inst_ticket(string start_date, string project_name) {
     Ticket a_new_one;
     a_new_one.create_ticket(start_date, project_name);
     k_tickets_vec.push_back(a_new_one);
-    // Serializing ticket vector goes here
 }
 
 void Keetos::delete_ticket(string project_name, string title) {
