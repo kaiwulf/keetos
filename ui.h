@@ -14,8 +14,9 @@ class UI {
         void help();
 
     private:
-        vector<string> s_usr_args;
-        string s_get;
+        bool find_xml();
+        vector<string> ui_usr_args;
+        string ui_get;
 };
 
 #endif
