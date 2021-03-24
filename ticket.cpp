@@ -2,6 +2,8 @@
 #include <string>
 
 #include "ticket.h"
+#include "helper.h"
+
 
 Ticket::Ticket() {
 
@@ -22,7 +24,7 @@ void Ticket::create_ticket(string start_date, string project_name) {
     // t_data.push_back(t_title);
 
     cout << "Assignment description:" << endl;
-    cin >> t_body;	// TO-Do implement alternative input methods, ie text file
+    t_body = ss_get_fun();
 }
 
 // setters
