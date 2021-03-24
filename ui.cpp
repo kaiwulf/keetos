@@ -23,8 +23,8 @@ void UI::get_args(int argc, char **argv) {
         ui_usr_args.assign(argv + 1, argv + argc);
         arg_parse();
     } else if(argc == 1) {
-        bool file = find_xml()
-        Keetos state(false);
+        bool file = find_xml();
+        Keetos state(file);
         cout << "This is KEETOS." << endl << "'create' a ticket" << endl
              << "'list' TO-DOs" << endl
              << "'find' a specific ticket" << endl
@@ -40,7 +40,7 @@ void UI::get_args(int argc, char **argv) {
     }
 }
 
-void UI:find_xml() {
+bool UI::find_xml() {
     fs::path kfile{ "keetos.bin" };
     if (fs::exists(kfile))
         return true;
