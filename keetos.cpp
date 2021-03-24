@@ -32,7 +32,7 @@ void Keetos::init_serialize() {
         k_body = "body";
         k_assigned = "assigned";
         k_start = "start_date";
-        k_end = "end date";
+        k_end = "end_date";
         k_title = "title";
         k_project = "project_name";
         k_body = "body";
@@ -60,18 +60,23 @@ void Keetos::push_vec_elems() {
     k_xml_vec.push_back(k_assigned);
 }
 
+string xmlize_line(string bracketed, string center){
+    string xml == "<" + bracketed + ">" + center + "</" + bracketed + ">";
+    return xml;
+}
+
 void Keetos::xml_serialize_write() {
     fstream xml_out;
     xml_out.open(k_keetos_file, ios::out);
     xml_out << k_header << endl;
     for(auto p : k_tickets_vec) {
-        xml_out << "<" << k_title << ">" << p.get_title() << "</" << k_title << ">" << endl;
-        xml_out << "<" << k_checked << ">" << p.get_checked() << "</" << k_checked << ">" << endl;
-        xml_out << "<" << k_assigned << ">" << p.get_assigned() << "</" << k_assigned << ">" << endl;
-        xml_out << "<" << k_start << ">" << p.get_start_date() << "</" << k_start << ">" << endl;
-        xml_out << "<" << k_end << ">" << p.get_end_date() << "</" << k_end << ">" << endl;
-        xml_out << "<" << k_project << ">" << p.get_proj_name() << "</" << k_project << ">" << endl;
-        xml_out << "<" << k_body << ">" << p.get_body() << "</" << k_body << ">" << endl;
+        xml_out << xmlize_line(k_title, p.get_title()) << endl;
+        xml_out << xmlize_line(k_checked, p.get_checked()) << endl;
+        xml_out << xmlize_line(k_assigned, p.get_assigned()) << endl;
+        xml_out << xmlize_line(k_start, << p.get_start_date()) << endl;
+        xml_out << xmlize_line(k_end, p.get_end_date()) << endl;
+        xml_out << xmlize_line(k_project, p.get_proj_name()) << endl;
+        xml_out << xmlize_line(k_body, p.get_body()) << endl;
     }
 
 }
@@ -94,7 +99,7 @@ void Keetos::run(string s) {
 }
 
 void Keetos::new_ticket(string start_date, string project_name) {
-    if(start_date != "" && project_name != "") {
+    if(start_date == "" && project_name == "") {
         cout << "Project: " << endl;
         cin >> project_name;
         cout << "Start date: " << endl;

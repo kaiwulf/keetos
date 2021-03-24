@@ -23,13 +23,16 @@ class Keetos {
         void delete_ticket(string project_name = "", string title = "");
         void run(string s);
         void to_dos();
+        string get_cmd();
+    private:
+        void inst_ticket(string start_date, string project_name);
         void init_serialize();
         void push_vec_elems();
         void xml_serialize_read();
         void xml_serialize_write();
-        string get_cmd();
-    private:
-        void inst_ticket(string start_date, string project_name);
+        string xmlize_line(string bracketed, string center);
+
+        // working variables
         string k_cmd;
         string k_keetos_file;
         vector<Ticket> k_tickets_vec;
