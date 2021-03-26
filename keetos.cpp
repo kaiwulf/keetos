@@ -41,11 +41,20 @@ void Keetos::init_serialize() {
         push_vec_elems();
 }
 
+pair<string, string> parse_xml_line(string xml) {
+    
+}
+
 void Keetos::xml_serialize_read() {
     fstream xml_in;
+    string xml_line;
+    map<string, string> that;
 
     xml_in.open(k_keetos_file, ios::out);
-        // load info to vector
+    
+    while(std::getline(xml_in, xml_line)) {
+        that.insert(parse_xml_line(xml_line));
+    }
 }
 
 void Keetos::push_vec_elems() {
