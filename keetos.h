@@ -5,6 +5,7 @@
 
 #include <string>
 #include <vector>
+#include <utility>
 
 #include "ticket.h"
 
@@ -31,6 +32,7 @@ class Keetos {
         void xml_serialize_read();
         void xml_serialize_write();
         string xmlize_line(string bracketed, string center);
+        pair<string, string> parse_xml_line(string xml);
 
         // working variables
         string k_cmd;
@@ -40,7 +42,6 @@ class Keetos {
         // for XML parsing
         string k_header;
         string k_checked;
-        string k_assigned;
         string k_start;
         string k_end;
         string k_title;
