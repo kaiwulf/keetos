@@ -21,10 +21,11 @@ void Ticket::create_ticket(string start_date, string project_name) {
 
     cout << "Assignment title: ";
     cin >> t_title;
-    // t_data.push_back(t_title);
 
     cout << "Assignment description:" << endl;
     t_body = ss_get_fun();
+
+    t_end_date = "tbd";
 }
 
 // setters
@@ -36,10 +37,6 @@ void Ticket::set_checked(bool checked) {
 // getters
 string Ticket::get_proj_name() {
     return t_project_name;
-}
-
-string Ticket::get_assigned() {
-    return t_assigned;
 }
 
 bool Ticket::get_checked() {

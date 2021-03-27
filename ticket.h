@@ -29,7 +29,6 @@ class Ticket {
     private:
         bool t_checked;
         string t_body;
-        string t_assigned;
         string t_end_date;
         string t_start_date;
         string t_title;
