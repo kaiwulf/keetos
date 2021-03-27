@@ -2,7 +2,8 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
-
+#include <map>
+#include <utility>
 
 #include "keetos.h"
 
@@ -16,9 +17,8 @@ Keetos::Keetos() {
 
 Keetos::Keetos(bool read) {
     k_keetos_file = "keetos.bin";
-
-    if(read)
-        xml_serialize_read();
+    
+    if(read) xml_serialize_read();
 }
 
 Keetos::~Keetos() {
@@ -30,47 +30,90 @@ void Keetos::init_serialize() {
         k_header = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
         k_checked = "checked";
         k_body = "body";
-        k_assigned = "assigned";
         k_start = "start_date";
         k_end = "end_date";
         k_title = "title";
         k_project = "project_name";
         k_body = "body";
-        k_assigned = "assigned";
 
         push_vec_elems();
 }
 
-pair<string, string> parse_xml_line(string xml) {
+pair<string, string> Keetos::parse_xml_line(string xml) {
+    // string xml = "<this>is a xml</this>";
+    string delimiters = "";
+    string center = "";
+    pair<string, string> xml_pair;
+    int i = 0;
+
+    while(i < xml.length()) {
+        if(xml[i] == '<') {
+            i+=1;
+            char s = xml[i];
+            while(s != '>') {
+                delimiters.push_back(s);
+                i+=1;
+                s = xml[i];
+            }
+        }
+        if(xml [i] == '>') {
+            i+=1;
+            char s = xml[i];
+            while(s != '<') {
+                center.push_back(s);
+                i+=1;
+                s = xml[i];
+                if(xml[i] == '<')
+                    goto end;
+            }
+        }
+        i+=1;
+        end: break;
+    }
     
+    cout << "delimiter " << delimiters << endl;
+    cout << "center " << center << endl;
+
+    xml_pair.first = delimiters;
+    xml_pair.second = center;
+
+    return xml_pair;
 }
 
 void Keetos::xml_serialize_read() {
     fstream xml_in;
     string xml_line;
     map<string, string> that;
+    cout << "opening file" << endl;
+    xml_in.open(k_keetos_file, ios::in);
+    pair<string, string> parse;
 
-    xml_in.open(k_keetos_file, ios::out);
-    
+
     while(std::getline(xml_in, xml_line)) {
+        if(xml_line[1] == '?') continue;
+        parse = parse_xml_line(xml_line);
+        cout << "parse xml line " << parse.first << " " << parse.second << endl;
         that.insert(parse_xml_line(xml_line));
     }
+    string xml_serialized = "";
+    for(auto p: that) {
+        xml_serialized += (xmlize_line(p.first, p.second) + '\n');
+    }
+    // cout << "XML serialized" << xml_serialized << endl;
 }
 
 void Keetos::push_vec_elems() {
     k_xml_vec.push_back(k_header);
     k_xml_vec.push_back(k_checked);
     k_xml_vec.push_back(k_body);
-    k_xml_vec.push_back(k_assigned);
     k_xml_vec.push_back(k_start);
     k_xml_vec.push_back(k_end);
     k_xml_vec.push_back(k_title);
     k_xml_vec.push_back(k_project);
-    k_xml_vec.push_back(k_assigned);
 }
 
-string xmlize_line(string bracketed, string center){
-    string xml == "<" + bracketed + ">" + center + "</" + bracketed + ">";
+string Keetos::xmlize_line(string bracketed, string center){
+    string xml = "<" + bracketed + ">" + center + "</" + bracketed + ">";
     return xml;
 }
 
@@ -80,9 +123,9 @@ void Keetos::xml_serialize_write() {
     xml_out << k_header << endl;
     for(auto p : k_tickets_vec) {
         xml_out << xmlize_line(k_title, p.get_title()) << endl;
-        xml_out << xmlize_line(k_checked, p.get_checked()) << endl;
-        xml_out << xmlize_line(k_assigned, p.get_assigned()) << endl;
-        xml_out << xmlize_line(k_start, << p.get_start_date()) << endl;
+        string x= p.get_checked() == 0 ? "0" : "1";
+        xml_out << xmlize_line(k_checked, x) << endl;
+        xml_out << xmlize_line(k_start, p.get_start_date()) << endl;
         xml_out << xmlize_line(k_end, p.get_end_date()) << endl;
         xml_out << xmlize_line(k_project, p.get_proj_name()) << endl;
         xml_out << xmlize_line(k_body, p.get_body()) << endl;
