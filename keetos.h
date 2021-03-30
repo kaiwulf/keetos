@@ -47,6 +47,7 @@ class Keetos {
         string k_title;
         string k_project;
         string k_body;
+        bool k_read;
         vector<string> k_xml_vec;
 };
 
