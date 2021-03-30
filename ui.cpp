@@ -31,7 +31,7 @@ void UI::get_args(int argc, char **argv) {
              << "'project' - retrieve ticket(s) related to a project" << endl
              << "'finish' a ticket" << endl
              << "'delete' a ticket" << endl;
-        cin  >> ui_get;
+        getline(cin, ui_get);
     
         state.run(ui_get);
     

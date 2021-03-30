@@ -12,18 +12,16 @@ Ticket::Ticket() {
 void Ticket::create_ticket(string start_date, string project_name) {
 
     t_checked = false;
-    
-    // t_data.push_back(t_start_date);
+
     t_start_date = start_date;
     
     t_project_name = project_name;
-    // t_data.push_back(t_project_name);
 
     cout << "Assignment title: ";
-    cin >> t_title;
+    getline(cin, t_title);
 
-    cout << "Assignment description:" << endl;
-    t_body = ss_get_fun();
+    cout << "Assignment description: ";
+    getline(cin, t_body);
 
     t_end_date = "tbd";
 }
