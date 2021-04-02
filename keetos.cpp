@@ -16,7 +16,7 @@ Keetos::Keetos() {
 }
 
 Keetos::Keetos(bool read) {
-    k_keetos_file = "keetos.bin";
+    k_keetos_file = "keetos.xml";
     k_read = read;
     k_str_break = "<---------------------------------->";
     
