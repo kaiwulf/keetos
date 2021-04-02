@@ -34,9 +34,12 @@ class Keetos {
         string xmlize_line(string bracketed, string center);
         pair<string, string> parse_xml_line(string xml);
 
+        inline string bool_to_str(bool b) { string str = b == 0 ? "0" : "1"; return str; }
+
         // working variables
         string k_cmd;
         string k_keetos_file;
+        string k_str_break;
         vector<Ticket> k_tickets_vec;
 
         // for XML parsing
