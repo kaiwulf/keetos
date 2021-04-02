@@ -31,6 +31,25 @@ void Ticket::set_checked(bool checked) {
     t_checked = checked;
 }
 
+void Ticket::set_body(string body) {
+    t_body = body;
+}
+
+void Ticket::set_end_date(string date) {
+    t_end_date = date;
+}
+
+void Ticket::set_start_date(string date) {
+    t_start_date = date;
+}
+
+void Ticket::set_title(string title) {
+    t_title = title;
+}
+
+void Ticket::set_proj_name(string proj) {
+    t_project_name = proj;
+}
 
 // getters
 string Ticket::get_proj_name() {

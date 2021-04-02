@@ -23,6 +23,11 @@ class Ticket {
 
         //setters
         void set_checked(bool checked);
+        void set_body(string body);
+        void set_end_date(string date);
+        void set_start_date(string date);
+        void set_title(string title);
+        void set_proj_name(string proj);
 
         Ticket();
 
