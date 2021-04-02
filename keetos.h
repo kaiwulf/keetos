@@ -35,6 +35,7 @@ class Keetos {
         pair<string, string> parse_xml_line(string xml);
 
         inline string bool_to_str(bool b) { string str = b == 0 ? "0" : "1"; return str; }
+        inline bool str_to_bool(string s) { bool b00 = s == "0" ? 0 : 1; return b00; }
 
         // working variables
         string k_cmd;

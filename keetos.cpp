@@ -93,7 +93,7 @@ void Keetos::xml_serialize_read() {
         if(xml_line[1] == '?') continue;
         // If we find a break in the xml file that differentiates between different tickets...
         if(xml_line == k_str_break || xml_in.eof()) {
-            ticket.set_checked(that["checked"]);
+            ticket.set_checked(str_to_bool(that["checked"]));
             ticket.set_end_date(that["end_date"]);
             ticket.set_proj_name(that["project_name"]);
             ticket.set_start_date(that["start_date"]);
