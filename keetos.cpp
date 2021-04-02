@@ -18,6 +18,7 @@ Keetos::Keetos() {
 Keetos::Keetos(bool read) {
     k_keetos_file = "keetos.bin";
     k_read = read;
+    k_str_break = "<---------------------------------->";
     
     if(k_read) xml_serialize_read();
 }
@@ -81,33 +82,38 @@ pair<string, string> Keetos::parse_xml_line(string xml) {
 void Keetos::xml_serialize_read() {
     fstream xml_in;
     string xml_line;
-    map<string, string> that;
-    cout << "opening file" << endl;
     xml_in.open(k_keetos_file, ios::in);
+    map<string, string> that;
     pair<string, string> parse;
+    Ticket ticket;
 
+    cout << "opening file..." << endl;
 
     while(std::getline(xml_in, xml_line)) {
         if(xml_line[1] == '?') continue;
+        // If we find a break in the xml file that differentiates between different tickets...
+        if(xml_line == k_str_break || xml_in.eof()) {
+            ticket.set_checked(that["checked"]);
+            ticket.set_end_date(that["end_date"]);
+            ticket.set_proj_name(that["project_name"]);
+            ticket.set_start_date(that["start_date"]);
+            ticket.set_title(that["title"]);
+            k_tickets_vec.push_back(ticket);
+            // stream.ignore(256, ‘\n’);
+            continue;
+        }
         parse = parse_xml_line(xml_line);
         that.insert(parse_xml_line(xml_line));
     }
-
-    
-    Ticket ticket();
-    ticket.set_checked(that["checked"]);
-    ticket.set_end_date(that["end_date"]);
-    ticket.set_proj_name(that["project_name"]);
-    ticket.set_start_date(that["start_date"]);
-    ticket.set_title(that["title"]);
-    k_tickets_vec.push_back(ticket);
-    
 
     string xml_serialized = "";
     for(auto p: that) {
         xml_serialized += (xmlize_line(p.first, p.second) + '\n');
     }
     cout << "XML serialized" << xml_serialized << endl;
+    for(auto v: k_tickets_vec) {
+        v.display_info();
+    }
 }
 
 void Keetos::push_vec_elems() {
@@ -131,14 +137,13 @@ void Keetos::xml_serialize_write() {
     xml_out << k_header << endl;
     for(auto p : k_tickets_vec) {
         xml_out << xmlize_line(k_title, p.get_title()) << endl;
-        string x= p.get_checked() == 0 ? "0" : "1";
-        xml_out << xmlize_line(k_checked, x) << endl;
+        xml_out << xmlize_line(k_checked, bool_to_str(p.get_checked())) << endl;
         xml_out << xmlize_line(k_start, p.get_start_date()) << endl;
         xml_out << xmlize_line(k_end, p.get_end_date()) << endl;
         xml_out << xmlize_line(k_project, p.get_proj_name()) << endl;
         xml_out << xmlize_line(k_body, p.get_body()) << endl;
     }
-
+    xml_out << k_str_break << endl;
 }
 
 
