@@ -102,7 +102,7 @@ void Keetos::xml_serialize_read() {
             // stream.ignore(256, ‘\n’);
             continue;
         }
-        parse = parse_xml_line(xml_line);
+        // parse = parse_xml_line(xml_line);
         that.insert(parse_xml_line(xml_line));
     }
 
