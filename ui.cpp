@@ -41,7 +41,7 @@ void UI::get_args(int argc, char **argv) {
 }
 
 bool UI::find_xml() {
-    fs::path kfile{ "keetos.bin" };
+    fs::path kfile{ "keetos.xml" };
     if (fs::exists(kfile))
         return true;
     else
