@@ -12,7 +12,7 @@ using namespace std;
 // TO-DO serialize vector to save on disk
 
 Keetos::Keetos() {
-
+    
 }
 
 Keetos::Keetos(bool read) {
@@ -26,6 +26,22 @@ Keetos::Keetos(bool read) {
 Keetos::~Keetos() {
     init_serialize();
     xml_serialize_write();
+}
+
+void Keetos::run(string s) {
+    if(s == "create") {
+        new_ticket();
+    } else if(s == "list") {
+        to_dos();
+    } else if(s == "find") {
+        find_title();
+    } else if(s == "project") {
+        find_project();
+    } else if(s == "finish") {
+        finish_ticket();
+    } else if(s == "delete") {
+        delete_ticket();
+    }
 }
 
 void Keetos::init_serialize() {
@@ -98,11 +114,10 @@ void Keetos::xml_serialize_read() {
             ticket.set_proj_name(that["project_name"]);
             ticket.set_start_date(that["start_date"]);
             ticket.set_title(that["title"]);
+            ticket.set_body(that["body"]);
             k_tickets_vec.push_back(ticket);
-            // stream.ignore(256, ‘\n’);
             continue;
         }
-        // parse = parse_xml_line(xml_line);
         that.insert(parse_xml_line(xml_line));
     }
 
@@ -110,10 +125,10 @@ void Keetos::xml_serialize_read() {
     for(auto p: that) {
         xml_serialized += (xmlize_line(p.first, p.second) + '\n');
     }
-    cout << "XML serialized" << xml_serialized << endl;
-    for(auto v: k_tickets_vec) {
-        v.display_info();
-    }
+    // cout << "XML serialized" << xml_serialized << endl;
+    // for(auto v: k_tickets_vec) {
+    //     v.display_info();
+    // }
 }
 
 void Keetos::push_vec_elems() {
@@ -142,32 +157,16 @@ void Keetos::xml_serialize_write() {
         xml_out << xmlize_line(k_end, p.get_end_date()) << endl;
         xml_out << xmlize_line(k_project, p.get_proj_name()) << endl;
         xml_out << xmlize_line(k_body, p.get_body()) << endl;
+        cout << "body: " << p.get_body() << endl;
     }
     xml_out << k_str_break << endl;
 }
 
-
-void Keetos::run(string s) {
-    if(s == "create") {
-        new_ticket();
-    } else if(s == "list") {
-        to_dos();
-    } else if(s == "find") {
-        find_title();
-    } else if(s == "project") {
-        find_project();
-    } else if(s == "finish") {
-        finish_ticket();
-    } else if(s == "delete") {
-        delete_ticket();
-    }
-}
-
 void Keetos::new_ticket(string start_date, string project_name) {
     if(start_date == "" && project_name == "") {
-        cout << "Project: " << endl;
+        cout << "Project: ";
         getline(cin, project_name);
-        cout << "Start date: " << endl;
+        cout << "Start date: ";
         getline(cin, start_date);
     }
     inst_ticket(start_date, project_name);
@@ -223,6 +222,7 @@ void Keetos::find_title() {
 }
 
 void Keetos::to_dos() {
+    xml_serialize_read();
     for(auto p : k_tickets_vec) {
         if(p.get_checked()) {
             p.display_info();
