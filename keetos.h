@@ -38,6 +38,7 @@ class Keetos {
         inline bool str_to_bool(string s) { bool b00 = s == "0" ? 0 : 1; return b00; }
 
         // working variables
+        string k_break;
         string k_cmd;
         string k_keetos_file;
         string k_str_break;

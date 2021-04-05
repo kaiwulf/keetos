@@ -18,7 +18,7 @@ Keetos::Keetos() {
 Keetos::Keetos(bool read) {
     k_keetos_file = "keetos.xml";
     k_read = read;
-    k_str_break = "<---------------------------------->";
+    k_str_break = "<break>----------------------------------</break>";
     
     if(k_read) xml_serialize_read();
 }
@@ -46,6 +46,8 @@ void Keetos::run(string s) {
 
 void Keetos::init_serialize() {
         k_header = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+        k_break = "break";
+
         k_checked = "checked";
         k_body = "body";
         k_start = "start_date";
@@ -107,14 +109,13 @@ void Keetos::xml_serialize_read() {
 
     while(std::getline(xml_in, xml_line)) {
         if(xml_line[1] == '?') continue;
-        // If we find a break in the xml file that differentiates between different tickets...
-        if(xml_line == k_str_break || xml_in.eof()) {
-            ticket.set_checked(str_to_bool(that["checked"]));
-            ticket.set_end_date(that["end_date"]);
-            ticket.set_proj_name(that["project_name"]);
-            ticket.set_start_date(that["start_date"]);
-            ticket.set_title(that["title"]);
-            ticket.set_body(that["body"]);
+        if(xml_line == k_checked) ticket.set_checked(str_to_bool(that["checked"]));
+        if(xml_line == k_body) ticket.set_body(that["body"]);
+        if(xml_line == k_start) ticket.set_start_date(that["start_date"]);
+        if(xml_line == k_end) ticket.set_end_date(that["end_date"]);
+        if(xml_line == k_title) ticket.set_title(that["title"]);
+        if(xml_line == k_project) ticket.set_proj_name(that["project_name"]);
+        if(xml_line == k_break || xml_in.eof()) {
             k_tickets_vec.push_back(ticket);
             continue;
         }
