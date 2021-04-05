@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<title>cat</title>
+<title></title>
 <checked>0</checked>
-<assigned></assigned>
 <start_date></start_date>
-<end date></end_date>
+<end_date>tbd</end_date>
 <project_name></project_name>
-<body>dog</body>
-
+<body></body>
