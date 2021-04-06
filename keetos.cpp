@@ -102,7 +102,6 @@ void Keetos::xml_serialize_write() {
 }
 
 pair<string, string> Keetos::parse_xml_line(string xml) {
-    // string xml = "<this>is a xml</this>";
     string delimiters = "";
     string center = "";
     pair<string, string> xml_pair;
@@ -154,9 +153,7 @@ void Keetos::xml_serialize_read() {
         if(xml_line[1] == '?') continue;
         parse = parse_xml_line(xml_line);
         that.insert(parse);
-        // cout << "parse first " << parse.first << " " "k checked " << k_checked << endl;
-        if(parse.first == k_checked) {ticket.set_checked(str_to_bool(that["checked"]));
-        /*cout << "inserting k checked" << endl;*/ }
+        if(parse.first == k_checked) ticket.set_checked(str_to_bool(that["checked"]));
         if(parse.first == k_body) ticket.set_body(that["body"]);
         if(parse.first == k_start) ticket.set_start_date(that["start_date"]);
         if(parse.first == k_end) ticket.set_end_date(that["end_date"]);
@@ -164,7 +161,6 @@ void Keetos::xml_serialize_read() {
         if(parse.first == k_project) ticket.set_proj_name(that["project_name"]);
         if(parse.first == k_break || xml_in.eof()) {
             k_tickets_vec.push_back(ticket);
-            cout << "pusback k tickets vec in xml read" << endl;
             continue;
         }
     }
