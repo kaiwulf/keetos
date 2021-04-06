@@ -81,5 +81,5 @@ void Ticket::display_info() {
     cout << "Done? " << t_checked << endl;
     cout << "Start date " << t_start_date << endl;
     cout << "Assignment title " << t_title << endl;
-    cout << "Assignment description:" << endl << t_body << endl;
+    cout << "Assignment description:" << t_body << endl;
 }
