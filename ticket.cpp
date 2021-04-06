@@ -77,9 +77,11 @@ string Ticket::get_body() {
 }
 
 void Ticket::display_info() {
+    cout << endl << endl << "****************************";
     cout << "Project name " << t_project_name << endl;
     cout << "Done? " << t_checked << endl;
     cout << "Start date " << t_start_date << endl;
     cout << "Assignment title " << t_title << endl;
     cout << "Assignment description:" << t_body << endl;
+    cout << "*****************************" << endl << endl;
 }
