@@ -9,7 +9,7 @@
 
 using namespace std;
 
-// TO-DO serialize vector to save on disk
+// TO-DO Create a debugging class?
 
 Keetos::Keetos() {
     
@@ -173,6 +173,7 @@ void Keetos::xml_serialize_read() {
     for(auto p: that) {
         xml_serialized += (xmlize_line(p.first, p.second) + '\n');
     }
+
     cout << endl << endl << "-----------------------------" << endl;
     for(auto p: that) {
         cout << p.first << " " << p.second << endl;
@@ -229,10 +230,7 @@ void Keetos::find_title() {
 }
 
 void Keetos::to_dos() {
-    // cout << "in to dos" << endl;
-    // xml_serialize_read();
     for(auto p : k_tickets_vec) {
-        // cout << "ticket: " << p.get_checked();
         if(!p.get_checked()) {
             p.display_info();
         }
