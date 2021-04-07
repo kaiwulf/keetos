@@ -171,21 +171,6 @@ void Keetos::xml_serialize_read() {
         if(parse.first == k_title) ticket.set_title(that["title"]);
         if(parse.first == k_project) ticket.set_proj_name(that["project_name"]);
     }
-
-    // string xml_serialized = "";
-    // for(auto p: that) {
-    //     xml_serialized += (xmlize_line(p.first, p.second) + '\n');
-    // }
-
-    // cout << "Size of k_tickets_vec: " << k_tickets_vec.size() << endl;
-
-    // for(int i = 0; i < k_tickets_vec.size(); i++) cout << k_tickets_vec[i].get_proj_name() << endl;
-
-    // cout << endl << endl << "-----------------------------" << endl;
-    // for(auto p: that) {
-    //     cout << p.first << " " << p.second << endl;
-    // }
-    // cout << "-----------------------------" << endl << endl;
 }
 
 string Keetos::xmlize_line(string bracketed, string center){
