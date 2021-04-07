@@ -15,12 +15,12 @@ Keetos::Keetos() {
     
 }
 
-Keetos::Keetos(bool read) {
+Keetos::Keetos(bool exists) {
     k_keetos_file = "keetos.xml";
-    k_read = read;
+    k_exists = exists;
     k_str_break = "<break>----------------------------------</break>";
     
-    /* if(k_read) {
+    /* if(k_exists) {
         Is this necessary anymore?
     } */
 }
@@ -91,7 +91,7 @@ void Keetos::inst_ticket(string start_date, string project_name) {
 
 void Keetos::xml_serialize_write() {
     xml_out.open(k_keetos_file, std::ios_base::app);
-    if(!k_read) xml_out << k_header << endl;
+    if(!k_exists) xml_out << k_header << endl;      // If the file doesn't exist, add header
     for(auto p : k_tickets_vec) {
         xml_out << xmlize_line(k_title, p.get_title()) << endl;
         xml_out << xmlize_line(k_checked, bool_to_str(p.get_checked())) << endl;
