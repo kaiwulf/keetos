@@ -13,11 +13,24 @@
 <project_name>rasterizer</project_name>
 <body>Begin the stages of building an API, starting with functions to draw pixels.</body>
 <break>----------------------------------</break>
-<?xml version="1.0" encoding="UTF-8"?>
 <title>Add delete ticket functionality</title>
 <checked>0</checked>
 <start_date>04-07-2021</start_date>
 <end_date>tbd</end_date>
 <project_name>keetos</project_name>
 <body>Implement a way to remove a specific ticket from the xml file and keeping everything else intact.</body>
+<break>----------------------------------</break>
+<title>Finish AST</title>
+<checked>0</checked>
+<start_date>04-07-2021</start_date>
+<end_date>tbd</end_date>
+<project_name>level</project_name>
+<body>Finish developing the abstract syntax tree for the level interpreter</body>
+<break>----------------------------------</break>
+<title>repl</title>
+<checked>0</checked>
+<start_date>04-07-2021</start_date>
+<end_date>tbd</end_date>
+<project_name>keetos</project_name>
+<body>Develop a repl to interact with keetos and enter commands</body>
 <break>----------------------------------</break>
