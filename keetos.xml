@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<title>Fix Makefile</title>
+<checked>0</checked>
+<start_date>04-06-2021</start_date>
+<end_date>tbd</end_date>
+<project_name>OasisOS</project_name>
+<body>Straighten up the Makefile so it's more readable and links the clib.a library</body>
+<break>----------------------------------</break>
+<?xml version="1.0" encoding="UTF-8"?>
+<title>Fix Makefile</title>
+<checked>0</checked>
+<start_date>04-06-2021</start_date>
+<end_date>tbd</end_date>
+<project_name>OasisOS</project_name>
+<body>Straighten up the Makefile so it's more readable and links the clib.a library</body>
+<title>Draw pixel</title>
+<checked>0</checked>
+<start_date>04-06-2021</start_date>
+<end_date>tbd</end_date>
+<project_name>rasterizer</project_name>
+<body>Begin the stages of building an API, starting with functions to draw pixels.</body>
+<break>----------------------------------</break>

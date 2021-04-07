@@ -87,8 +87,8 @@ void Keetos::inst_ticket(string start_date, string project_name) {
 }
 
 void Keetos::xml_serialize_write() {
-    fstream xml_out;
-    xml_out.open(k_keetos_file, ios::out);
+    ofstream xml_out;
+    xml_out.open(k_keetos_file, std::ios_base::app);
     xml_out << k_header << endl;
     for(auto p : k_tickets_vec) {
         xml_out << xmlize_line(k_title, p.get_title()) << endl;
