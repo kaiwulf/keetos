@@ -20,7 +20,9 @@ Keetos::Keetos(bool read) {
     k_read = read;
     k_str_break = "<break>----------------------------------</break>";
     
-    if(k_read) xml_serialize_read();
+    // if(k_read) {
+
+    // }
 }
 
 Keetos::~Keetos() {
@@ -30,6 +32,7 @@ void Keetos::run(string s) {
     if(s == "create") {
         new_ticket();
     } else if(s == "list") {
+        xml_serialize_read();
         to_dos();
     } else if(s == "find") {
         find_title();
@@ -70,13 +73,13 @@ void Keetos::init_serialize() {
 }
 
 void Keetos::push_vec_elems() {
-    k_xml_vec.push_back(k_header);
-    k_xml_vec.push_back(k_checked);
-    k_xml_vec.push_back(k_body);
-    k_xml_vec.push_back(k_start);
-    k_xml_vec.push_back(k_end);
-    k_xml_vec.push_back(k_title);
-    k_xml_vec.push_back(k_project);
+    k_vec_xml_tags.push_back(k_header);
+    k_vec_xml_tags.push_back(k_checked);
+    k_vec_xml_tags.push_back(k_body);
+    k_vec_xml_tags.push_back(k_start);
+    k_vec_xml_tags.push_back(k_end);
+    k_vec_xml_tags.push_back(k_title);
+    k_vec_xml_tags.push_back(k_project);
 }
 
 
@@ -87,9 +90,8 @@ void Keetos::inst_ticket(string start_date, string project_name) {
 }
 
 void Keetos::xml_serialize_write() {
-    ofstream xml_out;
     xml_out.open(k_keetos_file, std::ios_base::app);
-    xml_out << k_header << endl;
+    if(!k_read) xml_out << k_header << endl;
     for(auto p : k_tickets_vec) {
         xml_out << xmlize_line(k_title, p.get_title()) << endl;
         xml_out << xmlize_line(k_checked, bool_to_str(p.get_checked())) << endl;
@@ -139,42 +141,51 @@ pair<string, string> Keetos::parse_xml_line(string xml) {
 }
 
 void Keetos::xml_serialize_read() {
-    ifstream xml_in;
     string xml_line;
     xml_in.open(k_keetos_file, ios::in);
-    map<string, string> that;
+    
     pair<string, string> parse;
     Ticket ticket;
+    string paused;
 
     cout << "opening file..." << endl;
     init_serialize();
 
     while(std::getline(xml_in, xml_line)) {
         if(xml_line[1] == '?') continue;
-        parse = parse_xml_line(xml_line);
+        k_xml_vec.push_back(xml_line);
+    }
+    for(auto xml_vec_line: k_xml_vec) {
+        map<string, string> that;
+        parse = parse_xml_line(xml_vec_line);
         that.insert(parse);
+
+        if(parse.first == k_break) {
+            k_tickets_vec.push_back(ticket);
+            continue;
+        }
         if(parse.first == k_checked) ticket.set_checked(str_to_bool(that["checked"]));
         if(parse.first == k_body) ticket.set_body(that["body"]);
         if(parse.first == k_start) ticket.set_start_date(that["start_date"]);
         if(parse.first == k_end) ticket.set_end_date(that["end_date"]);
         if(parse.first == k_title) ticket.set_title(that["title"]);
         if(parse.first == k_project) ticket.set_proj_name(that["project_name"]);
-        if(parse.first == k_break || xml_in.eof()) {
-            k_tickets_vec.push_back(ticket);
-            continue;
-        }
     }
 
-    string xml_serialized = "";
-    for(auto p: that) {
-        xml_serialized += (xmlize_line(p.first, p.second) + '\n');
-    }
+    // string xml_serialized = "";
+    // for(auto p: that) {
+    //     xml_serialized += (xmlize_line(p.first, p.second) + '\n');
+    // }
 
-    cout << endl << endl << "-----------------------------" << endl;
-    for(auto p: that) {
-        cout << p.first << " " << p.second << endl;
-    }
-    cout << "-----------------------------" << endl << endl;
+    // cout << "Size of k_tickets_vec: " << k_tickets_vec.size() << endl;
+
+    // for(int i = 0; i < k_tickets_vec.size(); i++) cout << k_tickets_vec[i].get_proj_name() << endl;
+
+    // cout << endl << endl << "-----------------------------" << endl;
+    // for(auto p: that) {
+    //     cout << p.first << " " << p.second << endl;
+    // }
+    // cout << "-----------------------------" << endl << endl;
 }
 
 string Keetos::xmlize_line(string bracketed, string center){
