@@ -20,9 +20,9 @@ Keetos::Keetos(bool read) {
     k_read = read;
     k_str_break = "<break>----------------------------------</break>";
     
-    // if(k_read) {
-
-    // }
+    /* if(k_read) {
+        Is this necessary anymore?
+    } */
 }
 
 Keetos::~Keetos() {
