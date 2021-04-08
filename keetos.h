@@ -43,8 +43,10 @@ class Keetos {
         // working variables
         string k_break;
         string k_cmd;
-        string k_keetos_file;
+        // string k_keetos_file = "keetos.xml";
+        // string k_str_break = "<break>----------------------------------</break>";
         string k_str_break;
+        string k_keetos_file;
         vector<Ticket> k_tickets_vec;
         ofstream xml_out;
         ifstream xml_in;
