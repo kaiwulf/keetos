@@ -15,6 +15,11 @@ UI::UI()  {
 
 void UI::cli_repl(int argc, char **argv) {
 
+    // Keetos state;
+    // while(true) {
+    //     getline(cin, ui_get);
+    //     state.run(ui_get);
+    // }
 }
 
 void UI::get_args(int argc, char **argv) {
