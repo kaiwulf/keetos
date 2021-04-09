@@ -34,7 +34,6 @@
 <project_name>keetos</project_name>
 <body>Develop a repl to interact with keetos and enter commands</body>
 <break>----------------------------------</break>
-<?xml version="1.0" encoding="UTF-8"?>
 <title>tensorflow</title>
 <checked>0</checked>
 <start_date>04-09-2021</start_date>
