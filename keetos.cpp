@@ -4,6 +4,7 @@
 #include <fstream>
 #include <map>
 #include <utility>
+#include <stdlib.h>
 
 #include "keetos.h"
 
@@ -35,13 +36,17 @@ void Keetos::run(string s) {
         xml_serialize_read();
         to_dos();
     } else if(s == "find") {
+        xml_serialize_read();
         find_title();
     } else if(s == "project") {
+        xml_serialize_read();
         find_project();
     } else if(s == "finish") {
         finish_ticket();
     } else if(s == "delete") {
         delete_ticket();
+    } else if(s == "exit") {
+        exit(EXIT_SUCCESS);
     }
 }
 
