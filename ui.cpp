@@ -15,11 +15,14 @@ UI::UI()  {
 
 void UI::cli_repl(int argc, char **argv) {
 
-    // Keetos state;
-    // while(true) {
-    //     getline(cin, ui_get);
-    //     state.run(ui_get);
-    // }
+    bool file = find_xml();
+    Keetos state(file);
+    while(true) {
+        display_menu();
+        getline(cin, ui_get);
+        state.run(ui_get);
+        cin.ignore();
+    }
 }
 
 void UI::get_args(int argc, char **argv) {
@@ -30,12 +33,7 @@ void UI::get_args(int argc, char **argv) {
     } else if(argc == 1) {
         bool file = find_xml();
         Keetos state(file);
-        cout << "This is KEETOS." << endl << "'create' a ticket" << endl
-             << "'list' TO-DOs" << endl
-             << "'find' a specific ticket" << endl
-             << "'project' - retrieve ticket(s) related to a project" << endl
-             << "'finish' a ticket" << endl
-             << "'delete' a ticket" << endl;
+        display_menu();
         getline(cin, ui_get);
     
         state.run(ui_get);
@@ -43,6 +41,16 @@ void UI::get_args(int argc, char **argv) {
     } else {
         help();
     }
+}
+
+void UI::display_menu() {
+    cout << "This is KEETOS." << endl << "'create' a ticket" << endl
+     << "'list' TO-DOs" << endl
+     << "'find' a specific ticket" << endl
+     << "'project' - retrieve ticket(s) related to a project" << endl
+     << "'finish' a ticket" << endl
+     << "'delete' a ticket" << endl
+     << "'exit' KEETOS" << endl;
 }
 
 bool UI::find_xml() {

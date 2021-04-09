@@ -12,7 +12,7 @@ class UI {
         void get_args(int argc, char **argv);
         void arg_parse();
         void help();
-
+        void display_menu();
     private:
         bool find_xml();
         vector<string> ui_usr_args;
