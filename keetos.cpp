@@ -48,6 +48,7 @@ void Keetos::run(string s) {
     } else if(s == "exit") {
         exit(EXIT_SUCCESS);
     }
+    k_tickets_vec.clear();
 }
 
 void Keetos::new_ticket(string start_date, string project_name) {
