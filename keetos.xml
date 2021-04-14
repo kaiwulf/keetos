@@ -55,3 +55,10 @@
 <project_name>GUI</project_name>
 <body>create a simple fltk app. develop basic skills in GUI development.</body>
 <break>----------------------------------</break>
+<title>scheme</title>
+<checked>0</checked>
+<start_date>04-14-2021</start_date>
+<end_date>tbd</end_date>
+<project_name>relativity</project_name>
+<body>Symbolic computational physics. Apply formulas and code from 'functional differential geometry' to an interactive GUI program.</body>
+<break>----------------------------------</break>
