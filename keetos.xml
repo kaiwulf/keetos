@@ -41,3 +41,17 @@
 <project_name>imger</project_name>
 <body>Experiment with tensorflow and image recognition</body>
 <break>----------------------------------</break>
+<title>review hash tables</title>
+<checked>0</checked>
+<start_date>04-14-2021</start_date>
+<end_date>tbd</end_date>
+<project_name>hash table</project_name>
+<body>review how hash tables work. Start sketching outlines for a hash table created from scratch.</body>
+<break>----------------------------------</break>
+<title>simple fltk app</title>
+<checked>0</checked>
+<start_date>04-14-2021</start_date>
+<end_date>tbd</end_date>
+<project_name>GUI</project_name>
+<body>create a simple fltk app. develop basic skills in GUI development.</body>
+<break>----------------------------------</break>
